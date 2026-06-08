@@ -1,4 +1,30 @@
 /* ==========================================
+   0. VARIÁVEIS DE CORES E CONFIGURAÇÕES (RESET)
+   ========================================== */
+:root {
+    --cor-fundo: #060608;
+    --cor-card: #111116;
+    --cor-principal: #00e5ff;
+    --cor-secundaria: #7000ff;
+    --cor-botao: #00e5ff;
+    --cor-texto: #ffffff;
+    --cor-texto-mutado: #8a8a98;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    padding: 2rem;
+}
+
+/* ==========================================
    6. ESTILIZAÇÃO DO SIMULADOR VISUAL
    ========================================== */
 .simulador-box {
@@ -10,6 +36,11 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+.controles {
+    display: flex;
+    flex-direction: column;
 }
 
 .campo-selecao {
@@ -32,6 +63,12 @@
     border-radius: 6px;
     font-size: 1rem;
     outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.campo-selecao select:focus {
+    border-color: var(--cor-secundaria);
 }
 
 .resultado-painel {
@@ -49,6 +86,7 @@
 
 .resultado-painel p {
     margin-bottom: 0.5rem;
+    line-height: 1.5;
 }
 
 .mensagem-alerta {
@@ -57,10 +95,14 @@
     color: var(--cor-texto-mutado);
 }
 
+/* ==========================================
+   7. RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================== */
 /* Alinha os controles lado a lado no computador */
 @media (min-width: 768px) {
     .simulador-box {
         flex-direction: row;
+        align-items: stretch;
     }
     .controles {
         flex: 1;
