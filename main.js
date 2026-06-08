@@ -2,22 +2,15 @@
    1. CONTROLE DO MENU RESPONSIVO (HAMBÚRGUER)
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", function () {
-    // Seleciona o botão do menu e a lista de links do HTML
     const menuToggle = document.getElementById("menuToggle");
     const navMenu = document.getElementById("navMenu");
 
-    // Verifica se os elementos existem na página para evitar erros
     if (menuToggle && navMenu) {
-        // Adiciona o evento de clique no botão hambúrguer
         menuToggle.addEventListener("click", function () {
-            // Liga/Desliga a classe 'active' que mostra o menu no CSS
             navMenu.classList.toggle("active");
-            
-            // Efeito visual opcional: Transforma as barras em um 'X'
             menuToggle.classList.toggle("open");
         });
 
-        // Fecha o menu automaticamente quando o usuário clica em um link
         const links = navMenu.querySelectorAll("a");
         links.forEach(link => {
             link.addEventListener("click", function () {
@@ -26,51 +19,57 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-});
 
+    /* ==========================================================================
+       2. CONEXÃO DA INTERFACE DO SIMULADOR COM A TELA
+       ========================================================================== */
+    const btnSimular = document.getElementById("btnSimular");
+    
+    // Verifica se o botão do simulador existe na página antes de aplicar o evento
+    if (btnSimular) {
+        btnSimular.addEventListener("click", function () {
+            // Captura os valores selecionados pelo usuário nas caixas de seleção
+            const climaSelecionado = document.getElementById("selectClima").value;
+            const tecnologiaSelecionada = document.getElementById("selectTecnologia").value;
 
-/* ==========================================================================
-   2. INTERAÇÃO DO SIMULADOR DE CLIMA E SUSTENTABILIDADE (AGRINHO 2026)
-   ========================================================================== */
-/**
- * Função fictícia para rodar a simulação do campo do futuro.
- * Pode ser chamada via console para testes ou atrelada a um formulário futuramente.
- * @param {string} clima - 'seco', 'chuvoso' ou 'ideal'
- * @param {string} tecnologia - 'drones', 'sensores' ou 'nenhuma'
- */
-function simularPlantio(clima, tecnologia) {
-    let resultadoProducao = "";
-    let economiaAgua = "";
-    let mensagemSustentavel = "";
+            // Elementos da tela que vão mudar de texto
+            const txtProducao = document.getElementById("resProducao");
+            const txtAgua = document.getElementById("resAgua");
+            const txtMensagem = document.getElementById("resMensagem");
 
-    // Lógica para determinar o impacto com base nas escolhas do usuário
-    if (tecnologia === "sensores" && clima === "seco") {
-        resultadoProducao = "Alta! 🌾";
-        economiaAgua = "40% de economia.";
-        mensagemSustentavel = "Os sensores detectaram a falta de umidade e irrigaram apenas o necessário!";
-    } else if (tecnologia === "drones" && clima === "chuvoso") {
-        resultadoProducao = "Estável! 🛸";
-        economiaAgua = "10% de economia.";
-        mensagemSustentavel = "Os drones mapearam as áreas alagadas em tempo real, evitando a perda de nutrientes do solo.";
-    } else if (tecnologia === "nenhuma") {
-        resultadoProducao = "Baixa a Moderada... ⚠️";
-        economiaAgua = "0% (Desperdício detectado).";
-        mensagemSustentavel = "Sem tecnologia, o manejo não foi preciso. O campo sofreu com as variações do clima.";
-    } else {
-        resultadoProducao = "Excelente! 🚀";
-        economiaAgua = "25% de economia.";
-        mensagemSustentavel = "A combinação ideal de tecnologia com a natureza garante comida na mesa e planeta protegido.";
+            // Variáveis temporárias para guardar os resultados da lógica
+            let resultadoProducao = "";
+            let economiaAgua = "";
+            let mensagemSustentavel = "";
+
+            // Estrutura condicional para calcular o resultado da fazenda do futuro
+            if (tecnologiaSelecionada === "sensores" && climaSelecionado === "seco") {
+                resultadoProducao = "Alta e Estável! 🌾";
+                economiaAgua = "40% de economia de recursos.";
+                mensagemSustentavel = "Excelente! Os sensores detectaram a falta de umidade exata nas raízes e ativaram a irrigação gota a gota automaticamente, poupando água potável.";
+            } else if (tecnologiaSelecionada === "drones" && climaSelecionado === "chuvoso") {
+                resultadoProducao = "Otimizada! 🛸";
+                economiaAgua = "15% de economia.";
+                mensagemSustentavel = "Sucesso! Os drones mapearam as poças d'água causadas pelo excesso de chuva e a inteligência artificial recalculou os canais de drenagem do solo.";
+            } else if (tecnologiaSelecionada === "nenhuma") {
+                resultadoProducao = "Baixa a Moderada... ⚠️";
+                economiaAgua = "0% (Risco de desperdício ou perda)";
+                mensagemSustentavel = "Alerta! Sem monitoramento tecnológico, o manejo manual não acompanhou as variações severas do clima, gerando gastos desnecessários de recursos.";
+            } else {
+                resultadoProducao = "Máxima Eficiência! 🚀";
+                economiaAgua = "25% de economia global.";
+                mensagemSustentavel = "Ótimo trabalho! A tecnologia aplicada manteve as plantas saudáveis em harmonia com o meio ambiente.";
+            }
+
+            // Injeta as respostas calculadas diretamente nas tags HTML correspondentes
+            txtProducao.innerText = resultadoProducao;
+            txtAgua.innerText = economiaAgua;
+            txtMensagem.innerText = mensagemSustentavel;
+
+            // Adiciona um efeito de piscar suave no painel para indicar que atualizou
+            const painel = document.getElementById("resultadoPainel");
+            painel.style.opacity = "0.5";
+            setTimeout(() => { painel.style.opacity = "1"; }, 150);
+        });
     }
-
-    // Exibe o resultado no console para testes iniciais dos estudantes
-    console.log(`--- SIMULAÇÃO AGRINHO 2026 ---`);
-    console.log(`Clima Escolhido: ${clima.toUpperCase()}`);
-    console.log(`Tecnologia Aplicada: ${tecnologia.toUpperCase()}`);
-    console.log(`Eficiência da Produção: ${resultadoProducao}`);
-    console.log(`Uso da Água: ${economiaAgua}`);
-    console.log(`Resultado: ${mensagemSustentavel}`);
-    console.log(`--------------------------------`);
-}
-
-// Mensagem de boas-vindas no console para confirmar que o arquivo carregou com sucesso
-console.log("🌱 Arquivo main.js do Agrinho 2026 carregado com sucesso! Pronto para inovar o campo.");
+});

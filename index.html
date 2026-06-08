@@ -65,10 +65,54 @@
     </section>
 
     <section id="impactos" class="section container">
-        <h2 class="section-title">Impactos Positivos</h2>
+        <h2 class="section-title">Impactos Positives</h2>
         <p class="section-text">
             Essa revolução beneficia os produtores, que gastam menos e produzem mais; as cidades, que recebem 
             alimentos mais seguros e saudáveis; e a economia global, impulsionada por práticas verdes que 
             respeitam os limites do planeta.
         </p>
     </section>
+
+    <section id="simulador" class="section container">
+        <h2 class="section-title">Simulador de Cultivo Inteligente</h2>
+        <p class="section-text">Escolha as condições climáticas e a tecnologia que deseja aplicar para testar a eficiência do seu campo tecnológico:</p>
+        
+        <div class="simulador-box">
+            <div class="controles">
+                <div class="campo-selecao">
+                    <label for="selectClima">Condição do Clima:</label>
+                    <select id="selectClima">
+                        <option value="ideal">Tempo Ideal / Estável</option>
+                        <option value="seco">Seca Severa / Estiagem</option>
+                        <option value="chuvoso">Chuvas Excessivas</option>
+                    </select>
+                </div>
+
+                <div class="campo-selecao">
+                    <label for="selectTecnologia">Tecnologia Aplicada:</label>
+                    <select id="selectTecnologia">
+                        <option value="nenhuma">Nenhuma (Cultivo Tradicional)</option>
+                        <option value="sensores">Sensores de Solo e Irrigação Automatizada</option>
+                        <option value="drones">Drones de Monitoramento e IA</option>
+                    </select>
+                </div>
+
+                <button id="btnSimular" class="btn-primary">Iniciar Simulação</button>
+            </div>
+
+            <div class="resultado-painel" id="resultadoPainel">
+                <h3>Relatório do Campo:</h3>
+                <p><strong>Eficiência da Produção:</strong> <span id="resProducao">-</span></p>
+                <p><strong>Uso da Água:</strong> <span id="resAgua">-</span></p>
+                <p class="mensagem-alerta" id="resMensagem">Selecione as opções acima e clique em iniciar para ver o impacto ecológico.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 2rem; color: #b3b3b3; font-size: 0.9rem; border-top: 1px solid rgba(0, 255, 135, 0.1); margin-top: 4rem;">
+        <p>&copy; 2026 Agrinho - Tecnologia e Sustentabilidade. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
