@@ -1,0 +1,235 @@
+/* ==========================================
+   1. VARIÁVEIS DE CORES E CONFIGURAÇÕES GERAIS
+   ========================================== */
+:root {
+    --cor-fundo: #0a0a0c;       /* Preto futurista/espacial */
+    --cor-principal: #00ff87;   /* Verde neon/tecnológico */
+    --cor-secundaria: #00e5ff;  /* Azul neon/digital */
+    --cor-texto: #ffffff;       /* Branco para alta legibilidade */
+    --cor-texto-mutado: #b3b3b3;/* Cinza claro para parágrafos */
+    --cor-botao: #7000ff;       /* Roxo vibrante */
+    --cor-botao-hover: #8b33ff; /* Roxo mais claro para o efeito hover */
+    --cor-card: #141419;        /* Preto levemente mais claro para destacar seções */
+    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transicao-suave: all 0.3s ease;
+}
+
+/* Reset básico para limpar as margens padrões do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Deixa o movimento de rolar a página suave */
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+body {
+    overflow-x: hidden; /* Evita barras de rolagem horizontais indesejadas */
+}
+
+/* Container para alinhar os conteúdos no centro da tela */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* ==========================================
+   2. CABEÇALHO (HEADER) E MENU RESPONSIVO
+   ========================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background-color: rgba(10, 10, 12, 0.9); /* Fundo semi-transparente */
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco moderno */
+    border-bottom: 1px solid rgba(0, 255, 135, 0.1);
+    z-index: 1000; /* Garante que o menu fique sempre por cima de tudo */
+}
+
+.logo h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--cor-principal);
+    text-shadow: 0 0 10px rgba(0, 255, 135, 0.5);
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: var(--cor-texto-mutado);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transicao-suave);
+}
+
+/* Efeito ao passar o mouse nos links do menu */
+.nav-menu a:hover {
+    color: var(--cor-secundaria);
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+}
+
+/* Botão do Menu Hambúrguer (Escondido no Computador) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--cor-principal);
+    border-radius: 10px;
+    transition: var(--transicao-suave);
+}
+
+/* ==========================================
+   3. BANNER PRINCIPAL (HOME)
+   ========================================== */
+.banner {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+    background: linear-gradient(135deg, rgba(10,10,12,0.95) 40%, rgba(112,0,255,0.15)), 
+                radial-gradient(circle at bottom right, rgba(0,255,137,0.1), transparent);
+    /* Dica: Futuramente você pode colocar uma imagem de fundo tecnológica aqui */
+}
+
+.banner-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    background: linear-gradient(45deg, var(--cor-texto), var(--cor-secundaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    color: var(--cor-texto-mutado);
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+}
+
+/* Botão Roxo Estilizado */
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--cor-botao);
+    color: var(--cor-texto);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(112, 0, 255, 0.4);
+    transition: var(--transicao-suave);
+}
+
+.btn-primary:hover {
+    background-color: var(--cor-botao-hover);
+    transform: translateY(-3px); /* Sobe de leve ao passar o mouse */
+    box-shadow: 0 6px 20px rgba(112, 0, 255, 0.6);
+}
+
+/* ==========================================
+   4. ESTILIZAÇÃO DAS SEÇÕES (INTRODUÇÃO)
+   ========================================== */
+.section {
+    padding-top: 8rem; /* Espaço para o menu fixo não cobrir o título */
+}
+
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Detalhe de linha neon abaixo do título da seção */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--cor-principal);
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--cor-principal);
+}
+
+.section-text {
+    font-size: 1.1rem;
+    color: var(--cor-texto-mutado);
+    line-height: 1.8;
+    margin-top: 2rem;
+    max-width: 800px;
+}
+
+/* ==========================================
+   5. RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================== */
+
+/* Configurações para Tablets e Celulares (Telas menores que 768px) */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Mostra o botão hambúrguer */
+    }
+
+    /* Transforma o menu em uma barra lateral/dropdown escondida */
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(20, 24, 30, 0.98);
+        padding: 2rem;
+        border-bottom: 2px solid var(--cor-botao);
+        display: none; /* Escondido por padrão, o JavaScript vai ativar mudando para 'flex' */
+    }
+
+    .nav-menu.active {
+        display: block; /* Quando o JS adicionar a classe 'active', o menu aparece */
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .banner-content h1 {
+        font-size: 2.5rem; /* Diminui a letra em telas menores */
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
